@@ -1,0 +1,37 @@
+Why do programmers use pseudocode?
+
+It helps develop algorithm; and it is simple so anyone can read it without having a knowledge of a specific language.
+
+If you run pseudocode on your computer what would happen?
+
+Nothing would happen.
+
+
+Create a function that takes two numbers and prints out the greater number.
+ 
+INPUT  two numbers
+IF first number is greater than the second number
+	PRINT the first number
+ELSE
+	PRINT the second number
+END IF
+
+
+
+Create a function that prints out the numbers from 1 to 100.
+
+INIT counter is 0
+INIT total is empty
+WHILE counter is less than 100
+	ADD number to counter
+	PUT number in total
+END WHILE
+PRINT total
+
+Create a function that searches for a specific entry in a phonebook.
+Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
+
+INIT name is specfic entry
+IF name matches a name in phonebook
+	PRINT name
+ENF IF
