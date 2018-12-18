@@ -1,9 +1,13 @@
 Please submit your answers to the following questions in a file called intro_to_clean_coding_answers.txt.
 
 In your own words, explain what clean code is and why it is important.
+
+Clean coding is important because it helps with readability, ease of maintenance, simplicity, reusuability etc which makes the flow of programming much more easier and fluid.
+
+
 Read this article about Toyota and their use of bad code. Although you may not yet understand all of the topics discussed, think about another commonly used object that relies on computers and explain what would happen if the code was not created to an acceptable standard.
 
-
+Another object that relies on code is washing machine and if the code wasn't created to an accepted level things could be disastrous. You could have overflowing water, the cycle could go longer then necessary, the water could over heat or under heat, the spinner might not spin, the clothes might not be drenched of soap and water etc.
 
 
 Would you consider the following to be clean code? Explain why or why not. If not, refactor the code.
