@@ -21,14 +21,14 @@ ELSE
 
 Create a function that prints out the numbers from 1 to 100.
 
-INIT numbers is empty
+
 FOR 	counter = 0
 	while counter is less than 100
 	add 1 to counter
 	
-		PUSH counter to numbers
+	   PRINT counter
 END FOR
-PRINT numbers;
+
 
 Create a function that searches for a specific entry in a phonebook.
 
@@ -63,13 +63,11 @@ function isGreater(x,y){
 
 
 function printNumbers(){
-  let numbers=[];
   for(let counter =1; counter <= 100; counter++){
-      numbers.push(counter)
-}
-  return numbers
+      console.log(counter)
+  }
+ }
 
-}
 
 function phonebookEntry(entry, phonebook){
   let phonebookMatch=[];
