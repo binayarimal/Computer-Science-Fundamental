@@ -12,26 +12,69 @@ Create a function that takes two numbers and prints out the greater number.
 INPUT  two numbers
 IF first number is greater than the second number
 	PRINT the first number
-ELSE
+ELSE IF second number is greater than the first number
 	PRINT the second number
-END IF
+ELSE
+	PRINT "Numbers are equal"
 
 
 
 Create a function that prints out the numbers from 1 to 100.
 
-INIT counter is 0
-INIT total is empty
-WHILE counter is less than 100
-	ADD number to counter
-	PUT number in total
-END WHILE
-PRINT total
+INIT numbers is empty
+FOR 	counter = 0
+	while counter is less than 100
+	add 1 to counter
+	
+		PUSH counter to numbers
+END FOR
+PRINT numbers;
 
 Create a function that searches for a specific entry in a phonebook.
+
+INPUT entry
+INPUT phonebook
+INIT phonebookMatch is empty
+FOR 	counter = 0
+	while counter is less than the length of the phonebook
+	add 1 to counter
+
+		IF phonebook with the index of counter matches entry
+			PUSH phonebook with the index of counter to phonebookMatch
+		END IF
+END FOR
+ 
+IF the length of phonebookMatch is 0 
+	PRINT "Entry didn't match"
+ELSE
+	PRINT phonebookMatch
+
+
 Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
-INIT name is specfic entry
-IF name matches a name in phonebook
-	PRINT name
-ENF IF
+function isGreater(x,y){
+  if (x>y)
+    {return x}
+  else if (y>x)
+    {return y}
+  else
+    {return "Numbers are equal"}
+}
+
+
+function printNumbers(){
+  let numbers=[];
+  for(let counter =1; counter <= 100; counter++){
+      numbers.push(counter)
+}
+  return numbers
+
+}
+
+function phonebookEntry(entry, phonebook){
+  let phonebookMatch=[];
+  for (let counter =0; counter < phonebook.length; counter++){
+    if (phonebook[counter] === entry){ phonebookMatch.push(phonebook[counter])}
+     }
+ return (phonebookMatch.length===0? "Entry didn't match":phonebookMatch)
+}
