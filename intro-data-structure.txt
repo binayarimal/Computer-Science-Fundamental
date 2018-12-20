@@ -1,0 +1,50 @@
+function rollerCoasterLine(){
+  let line=  ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+  
+  function addMary(){
+    line.push("Mary");
+    return line
+  }
+  
+  function findJosh(){
+    let indexJosh="Person not found";
+    for(let i =0; i<line.length; i++){
+      if(line[i]==="Josh"){
+        indexJosh = i
+      }
+    }
+    return indexJosh
+  }
+  
+   function findEmily(){
+    let indexEmily="Person not found";
+    for(let i =0; i<line.length; i++){
+      if(line[i]==="Emily"){
+        indexEmily = i
+      }
+    }
+    return indexEmily
+  }
+  function addMelissa(){
+    line.splice(1,0,"Melissa");
+    return line
+  }
+  
+  function deletePatrick(){
+  line= line.filter(x =>{
+   return x !== "Patrick"})
+    
+    return line
+  }
+  
+  return deletePatrick()
+}
+console.log(rollerCoasterLine())
+
+
+Provide another real-world example that you can model using a data structure.
+
+Another real world example would be assembling a burger, with many components that have to go together a certain way a data structure would be helpful. We can put it an array like so: [cheese,patty,ketchup,mustard].
+
+How would your data structure allow developers to access and manipulate the data?
+Just like the previous rollerCoaster dataStructure , you can easily add toppings and remove it to the way the customer would want it. You can add the buns at the end because they always go in the front and the back of the array and without buns adding ingredients to the array also become easier .
