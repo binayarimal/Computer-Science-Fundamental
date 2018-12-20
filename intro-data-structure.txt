@@ -44,7 +44,7 @@ console.log(rollerCoasterLine())
 
 Provide another real-world example that you can model using a data structure.
 
-Another real world example would be assembling a burger, with many components that have to go together a certain way a data structure would be helpful. We can put it an array like so: [cheese,patty,ketchup,mustard].
+Another real world example would be assembling a burger, with many components that have to go together a certain way a data structure would be helpful. We can put it an array like so: [buns,cheese,patty,ketchup,mustard,buns].
 
 How would your data structure allow developers to access and manipulate the data?
-Just like the previous rollerCoaster dataStructure , you can easily add toppings and remove it to the way the customer would want it. You can add the buns at the end because they always go in the front and the back of the array and without buns adding ingredients to the array also become easier .
+Just like the previous rollerCoaster dataStructure , you can easily add toppings and remove it to the way the customer would want it. It would be bettr to add the buns at the end because they always go in the front and the back of the array and without buns adding ingredients to the array also become easier .
