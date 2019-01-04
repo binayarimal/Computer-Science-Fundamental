@@ -1,0 +1,89 @@
+
+What are some pros and cons of using linked lists instead of arrays?
+
+Linked List doesn't take any extra space, as you dynamicall increase linked list by adding it to the net, linked lists can grow into mmense size. One disadvantage of using linkedList is that you cant access value randoml.
+
+Come up with a real world example of a linked list.
+A game of scanvenger hunt would be a good example of a linked list as you look for clues and each clue directs you to the next one until you find what you are looking for.
+
+ 
+class node{
+  constructor(data){
+    this.data=data;
+    this.next=null;
+  }
+}
+class linkedList{a
+  constructor(){
+    this.head=null;
+     
+  }
+  
+  
+  addNode(val){
+   let Node= new node(val);
+    if (!this.head){
+      this.head=Node
+    }else{
+      let current=this.head;
+      while(current.next){
+        current=current.next
+      }
+      current.next=Node
+    }
+   
+   }
+ 
+  reverse(){
+  let current= this.head;
+    let prev=null;
+    
+    while(current){
+      let next= current.next;
+       current.next=prev;
+      prev=current;
+      current=next
+    }
+    this.head=prev
+   }
+  
+removeDuplicate() {
+ 
+ let current= this.head;
+  
+  while(current){
+    let nodes=current;
+    while(nodes.next){
+      if(current.data===nodes.next.data){
+        nodes.next=nodes.next.next
+      } else{nodes=nodes.next}
+    }
+    current=current.next;
+  }
+
+
+
+
+}
+}
+
+
+
+ 
+ 
+
+const list = new linkedList();
+
+ 
+ 
+
+list.addNode('a');
+list.addNode('b');
+list.addNode('c');
+list.addNode('d')
+list.removeDuplicate();
+list.reverse();
+
+
+
+console.log(list.head)
