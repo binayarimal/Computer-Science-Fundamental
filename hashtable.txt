@@ -1,0 +1,261 @@
+What is a hash table?
+Hash table is a type of data structure that stores each value by linking it to a key, forming key-value pairs, just like JavaScript objects.
+
+What is hashing?
+Hashing is when you generate a number based on a key to put it on an index in your array fo the hash table.
+
+How does a hash table store data?
+It stores data in an array with a key value pair, which makes 
+
+How are hash tables and objects different?
+The biggest difference is that objects are a list of values with identifier while hash table store a similarly formated values assigned to a key in a list.
+
+
+Determine whether you would use a hash table or an object to store each of the following pieces of data:
+A list of pets and their unique names.
+Hash Table
+The name, age, and the birthday of your best friend.
+Object
+The name and location of every company in a given city.
+Hash Table
+All of the books checked out from a library by a particular individual.
+Object
+The primary and secondary phone numbers for a contact.
+Object
+
+Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+
+class node{
+  constructor(data,next=null){
+    this.data=data;
+    this.next=next;
+  }
+}
+ 
+class HashTable {
+  constructor() {
+    this.data = [];
+    this.size=10; 
+  }
+  
+ hash(key) {
+  let hash=0;
+  for (let i =0; i < key.length; i++){
+   hash += key.charCodeAt(i)
+  }
+   return hash % this.size
+  }
+  
+  
+ 
+  sales(phone, name,adress) {
+         let info={
+           key: phone,
+           elem:{phone:phone,number:name,adress:adress} 
+         }
+       
+         if(this.data[this.hash(phone)]===undefined)
+         {
+            this.data[this.hash(phone)] = new node(info)
+         }
+   else  {   
+            let prev=this.data[this.hash(phone)]
+            let Node=new node(info,prev )
+            this.data[this.hash(phone)]=Node;
+         }
+  }
+  find(key){
+    let found="Information not found";
+    let index=this.data[this.hash(key)];
+   
+    if(index===undefined){return found;}
+      
+       
+           while(index.next){
+             if(index.data.key===key){
+               found= index.data.elem;
+               index=null;
+               return found
+              }
+              else
+              {
+               index=index.next
+              }
+          }
+         if(index.data.key===key){
+           found=index.data.elem;}
+    return found
+   }
+ 
+  
+  
+   
+}
+const h= new HashTable();
+h.sales("test","test","test");
+console.log(h.find('test4'))
+
+
+Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+
+class node{
+  constructor(data,next=null){
+    this.data=data;
+    this.next=next;
+  }
+}
+ 
+class HashTable {
+  constructor() {
+    this.data = [];
+    this.size=10; 
+  }
+  
+ hash(key) {
+  let hash=0;
+  for (let i =0; i < key.length; i++){
+   hash += key.charCodeAt(i)
+  }
+   return hash % this.size
+  }
+  
+  
+ 
+  inventory(serialNumber,itemName,unitPrice,quantity) {
+         let info={
+           key: serialNumber,
+           elem:{serialNumber:serialNumber,
+                 itemName:itemName,
+                 unitPrice:"$"+unitPrice,
+                 quantity:quantity,
+                 inventoryValue:"$"+quantity * unitPrice } 
+         }
+         
+       
+         if(this.data[this.hash(serialNumber)]===undefined)
+         {
+            this.data[this.hash(serialNumber)] = new node(info)
+         }
+   else  {   
+            let prev=this.data[this.hash(serialNumber)]
+            let Node=new node(info,prev )
+            this.data[this.hash(serialNumber)]=Node;
+         }
+  }
+  find(key){
+    let found="Information not found";
+    let index=this.data[this.hash(key)];
+   
+    if(index===undefined){return found;}
+      
+       
+           while(index.next){
+             if(index.data.key===key){
+               found= index.data.elem;
+               index=null;
+               return found
+              }
+              else
+              {
+               index=index.next
+              }
+          }
+         if(index.data.key===key){
+           found=index.data.elem;}
+    return found
+   }
+ 
+  
+ 
+}
+const h= new HashTable();
+
+ h.inventory("01020394","bread",30,25);
+h.inventory("01020364","Potato",33,20);
+h.inventory("01020354","Chalk",290,15);
+ 
+ 
+
+
+console.log(h.find('01020364'))
+
+
+
+Build a system that allows digital copies of newspapers to be entered and searched by publisher 
+and publication date. Use hash tables to store the necessary data.
+
+class node{
+  constructor(data,next=null){
+    this.data=data;
+    this.next=next;
+  }
+}
+ 
+class HashTable {
+  constructor() {
+    this.data = [];
+    this.size=10; 
+   
+  }
+  
+ hash(key) {
+  let hash=0;
+  for (let i =0; i < key.length; i++){
+   hash += key.charCodeAt(i)
+  }
+   return hash % this.size
+  }
+  
+  
+ 
+  magazine(publisher, publicationDate,magazine) {
+         let info={
+           key: publisher + publicationDate,
+           elem:{publisher:publisher,
+                 publicationDate:publicationDate,
+                 magazine:magazine} 
+         }
+       
+         if(this.data[this.hash(info.key)]===undefined)
+         {
+            this.data[this.hash(info.key)] = new node(info)
+         }
+   else  {   
+            let prev=this.data[this.hash(info.key)]
+            let Node=new node(info,prev )
+            this.data[this.hash(info.key)]=Node;
+         }
+  }
+  find(key1, key2){
+    key=key1+key2;
+    let found="Information not found";
+    let index=this.data[this.hash(key)];
+   
+    if(index===undefined){return found;}
+      
+       
+           while(index.next){
+             if(index.data.key===key){
+               found= index.data.elem;
+               index=null;
+               return found
+              }
+              else
+              {
+               index=index.next
+              }
+          }
+         if(index.data.key===key){
+           found=index.data.elem;}
+    return found
+   }
+ 
+  
+
+}
+const h= new HashTable();
+h.magazine("test","test","test");
+console.log(h.find('test','tejst'))
+
