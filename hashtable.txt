@@ -19,13 +19,14 @@ Object
 The name and location of every company in a given city.
 Hash Table
 All of the books checked out from a library by a particular individual.
-Object
+Hash Table
 The primary and secondary phone numbers for a contact.
 Object
 
 Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
 
+
 class node{
   constructor(data,next=null){
     this.data=data;
@@ -49,20 +50,18 @@ class HashTable {
   
   
  
-  sales(phone, name,adress) {
-         let info={
-           key: phone,
-           elem:{phone:phone,number:name,adress:adress} 
-         }
-       
-         if(this.data[this.hash(phone)]===undefined)
+  add(phoneBook) {
+         let key=phoneBook.phoneNumber;
+           
+                
+         if(this.data[this.hash(key)]===undefined)
          {
-            this.data[this.hash(phone)] = new node(info)
+            this.data[this.hash(key)] = new node(phoneBook)
          }
    else  {   
-            let prev=this.data[this.hash(phone)]
-            let Node=new node(info,prev )
-            this.data[this.hash(phone)]=Node;
+            let prev=this.data[this.hash(key)]
+            let Node=new node(phoneBook,prev )
+            this.data[this.hash(key)]=Node;
          }
   }
   find(key){
@@ -73,8 +72,8 @@ class HashTable {
       
        
            while(index.next){
-             if(index.data.key===key){
-               found= index.data.elem;
+             if(index.data.phoneNumber===key){
+               found= index.data;
                index=null;
                return found
               }
@@ -83,23 +82,32 @@ class HashTable {
                index=index.next
               }
           }
-         if(index.data.key===key){
-           found=index.data.elem;}
-    return found
+         if(index.data.phoneNumber===key){
+           found=index.data;}
+            return found
    }
  
   
   
    
 }
-const h= new HashTable();
-h.sales("test","test","test");
-console.log(h.find('test4'))
+const hashTable= new HashTable();
+hashTable.add({
+  Name: 'Binaya Rimal',
+  phoneNumber: '205-551-2253',
+  Adress: '123 5th ave Edmonds'})
+
+
+console.log(hashTable.find('205-551-2253'))
+
+
+
 
 
 Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 
 
+
 class node{
   constructor(data,next=null){
     this.data=data;
@@ -123,25 +131,18 @@ class HashTable {
   
   
  
-  inventory(serialNumber,itemName,unitPrice,quantity) {
-         let info={
-           key: serialNumber,
-           elem:{serialNumber:serialNumber,
-                 itemName:itemName,
-                 unitPrice:"$"+unitPrice,
-                 quantity:quantity,
-                 inventoryValue:"$"+quantity * unitPrice } 
-         }
-         
-       
-         if(this.data[this.hash(serialNumber)]===undefined)
+  add(inventory) {
+         let key=inventory.trackNumber;
+           
+                
+         if(this.data[this.hash(key)]===undefined)
          {
-            this.data[this.hash(serialNumber)] = new node(info)
+            this.data[this.hash(key)] = new node(inventory)
          }
    else  {   
-            let prev=this.data[this.hash(serialNumber)]
-            let Node=new node(info,prev )
-            this.data[this.hash(serialNumber)]=Node;
+            let prev=this.data[this.hash(key)]
+            let Node=new node(inventory,prev )
+            this.data[this.hash(key)]=Node;
          }
   }
   find(key){
@@ -152,8 +153,8 @@ class HashTable {
       
        
            while(index.next){
-             if(index.data.key===key){
-               found= index.data.elem;
+             if(index.data.trackNumber===key){
+               found= index.data;
                index=null;
                return found
               }
@@ -162,24 +163,26 @@ class HashTable {
                index=index.next
               }
           }
-         if(index.data.key===key){
-           found=index.data.elem;}
-    return found
+         if(index.data.trackNumber===key){
+           found=index.data;}
+            return found
    }
  
   
- 
+  
+   
 }
-const h= new HashTable();
+const hashTable= new HashTable();
+hashTable.add({
+  item: 'Milk',
+  amount: '25 gallons',
+  price: '$123456',
+  trackNumber:'12345'})
 
- h.inventory("01020394","bread",30,25);
-h.inventory("01020364","Potato",33,20);
-h.inventory("01020354","Chalk",290,15);
- 
- 
+
+console.log(hashTable.find('12345'))
 
 
-console.log(h.find('01020364'))
 
 
 
@@ -196,7 +199,7 @@ class node{
 class HashTable {
   constructor() {
     this.data = [];
-    this.size=10; 
+    this.size=2; 
    
   }
   
@@ -210,35 +213,30 @@ class HashTable {
   
   
  
-  magazine(publisher, publicationDate,magazine) {
-         let info={
-           key: publisher + publicationDate,
-           elem:{publisher:publisher,
-                 publicationDate:publicationDate,
-                 magazine:magazine} 
-         }
+  add(magazine) {
+         let key=JSON.stringify(magazine.publisher+magazine.date);
        
-         if(this.data[this.hash(info.key)]===undefined)
+         if(this.data[this.hash(key)]===undefined)
          {
-            this.data[this.hash(info.key)] = new node(info)
+            this.data[this.hash(key)] = new node(magazine)
          }
    else  {   
-            let prev=this.data[this.hash(info.key)]
-            let Node=new node(info,prev )
-            this.data[this.hash(info.key)]=Node;
+            let prev=this.data[this.hash(key)]
+            let Node=new node(magazine,prev )
+            this.data[this.hash(key)]=Node;
          }
   }
-  find(key1, key2){
-    key=key1+key2;
+  find(key){
+    
     let found="Information not found";
-    let index=this.data[this.hash(key)];
-   
-    if(index===undefined){return found;}
+    let index=this.data[this.hash(JSON.stringify(key.publisher+key.date))];
+      if(index===undefined){return found;}
       
        
            while(index.next){
-             if(index.data.key===key){
-               found= index.data.elem;
+             if(index.data.date===key.date &&
+                index.data.publisher===key.publisher){
+               found= index.data;
                index=null;
                return found
               }
@@ -247,15 +245,43 @@ class HashTable {
                index=index.next
               }
           }
-         if(index.data.key===key){
-           found=index.data.elem;}
-    return found
+         if(index.data.date===key.date && index.data.publisher===key.publisher){
+           found=index.data;}
+           return found
    }
  
   
 
 }
-const h= new HashTable();
-h.magazine("test","test","test");
-console.log(h.find('test','tejst'))
+const hashTable= new HashTable();
+hashTable.add({
+  publisher: 'LV Review Journal',
+  date: '09-25-1993',
+  paper: 'Heavy Traffic due to major road work'
+});
+hashTable.add({
+  publisher: 'LV Reviewo Journal',
+  date: '09-25-1993sc',
+  paper: 'Heavy Trafcfic due to major road work'
+});
+hashTable.add({
+  publisher: 'LV Revieew Journal',
+  date: '09-25-1993',
+  paper: 'Heavy Traffic due to major road work'
+});
+hashTable.add({
+  publisher: 'LV Revriewo Journal',
+  date: '09-25-1993sc',
+  paper: 'Heavy Trafcfic due to major road work'
+});
+
+
+console.log(hashTable.find({
+  publisher: 'LV Revieew Journal',
+  date: '09-25-1993',
+ 
+}))
+
+
+
 
