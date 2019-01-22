@@ -26,20 +26,19 @@ Object
 Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
 
-
 class node{
   constructor(data,next=null){
     this.data=data;
     this.next=next;
   }
 }
- 
+
 class HashTable {
   constructor() {
     this.data = [];
-    this.size=10; 
+    this.size=25; 
   }
-  
+
  hash(key) {
   let hash=0;
   for (let i =0; i < key.length; i++){
@@ -47,53 +46,27 @@ class HashTable {
   }
    return hash % this.size
   }
-  
-  
- 
+
+
+
   add(phoneBook) {
-         let key=phoneBook.phoneNumber;
-           
-                
-         if(this.data[this.hash(key)]===undefined)
-         {
-            this.data[this.hash(key)] = new node(phoneBook)
-         }
-   else  {   
-            let prev=this.data[this.hash(key)]
-            let Node=new node(phoneBook,prev )
-            this.data[this.hash(key)]=Node;
-         }
+         let key=phoneBook.phoneNumber; 
+         let index=this.hash(key)
+         this.data[index]=phoneBook;
+
   }
   find(key){
-    let found="Information not found";
-    let index=this.data[this.hash(key)];
-   
-    if(index===undefined){return found;}
-      
-       
-           while(index.next){
-             if(index.data.phoneNumber===key){
-               found= index.data;
-               index=null;
-               return found
-              }
-              else
-              {
-               index=index.next
-              }
-          }
-         if(index.data.phoneNumber===key){
-           found=index.data;}
-            return found
-   }
- 
-  
-  
-   
+
+    let index=this.hash(key);
+
+    if(this.data[index]===undefined){return "Info not found";}
+    else {return this.data[index];}
+
+   }   
 }
 const hashTable= new HashTable();
 hashTable.add({
-  Name: 'Binaya Rimal',
+  Date: 'Binaya Rimal',
   phoneNumber: '205-551-2253',
   Adress: '123 5th ave Edmonds'})
 
@@ -101,12 +74,7 @@ hashTable.add({
 console.log(hashTable.find('205-551-2253'))
 
 
-
-
-
 Build a system that allows a store owner to track their store's inventory using a hash table for storage.
-
-
 
 class node{
   constructor(data,next=null){
@@ -118,7 +86,7 @@ class node{
 class HashTable {
   constructor() {
     this.data = [];
-    this.size=10; 
+    this.size=25; 
   }
   
  hash(key) {
@@ -132,41 +100,20 @@ class HashTable {
   
  
   add(inventory) {
-         let key=inventory.trackNumber;
-           
-                
-         if(this.data[this.hash(key)]===undefined)
-         {
-            this.data[this.hash(key)] = new node(inventory)
-         }
-   else  {   
-            let prev=this.data[this.hash(key)]
-            let Node=new node(inventory,prev )
-            this.data[this.hash(key)]=Node;
-         }
+         let key=inventory.trackNumber; 
+         let index=this.hash(key)
+         this.data[index]=inventory;
+
   }
+  
   find(key){
-    let found="Information not found";
-    let index=this.data[this.hash(key)];
-   
-    if(index===undefined){return found;}
-      
-       
-           while(index.next){
-             if(index.data.trackNumber===key){
-               found= index.data;
-               index=null;
-               return found
-              }
-              else
-              {
-               index=index.next
-              }
-          }
-         if(index.data.trackNumber===key){
-           found=index.data;}
-            return found
-   }
+       let index=this.hash(key);
+
+    if(this.data[index]===undefined)
+    {return "Info not found";}
+    else {return this.data[index];}
+
+   }  
  
   
   
@@ -178,9 +125,22 @@ hashTable.add({
   amount: '25 gallons',
   price: '$123456',
   trackNumber:'12345'})
+hashTable.add({
+  item: 'Cookies',
+  amount: '5 box',
+  price: '$121',
+  trackNumber:'1234'})
+hashTable.add({
+  item:'Flowers',
+   amount: '8 box',
+  price: '$121',
+  trackNumber:'76244'
+})
 
 
-console.log(hashTable.find('12345'))
+console.log(hashTable.data);
+console.log(hashTable.find('76244'))
+
 
 
 
@@ -199,7 +159,7 @@ class node{
 class HashTable {
   constructor() {
     this.data = [];
-    this.size=2; 
+    this.size=15; 
    
   }
   
@@ -215,44 +175,24 @@ class HashTable {
  
   add(magazine) {
          let key=JSON.stringify(magazine.publisher+magazine.date);
-       
-         if(this.data[this.hash(key)]===undefined)
-         {
-            this.data[this.hash(key)] = new node(magazine)
-         }
-   else  {   
-            let prev=this.data[this.hash(key)]
-            let Node=new node(magazine,prev )
-            this.data[this.hash(key)]=Node;
-         }
+         let index=this.hash(key)
+         this.data[index]=magazine;
+
   }
   find(key){
     
-    let found="Information not found";
-    let index=this.data[this.hash(JSON.stringify(key.publisher+key.date))];
-      if(index===undefined){return found;}
-      
-       
-           while(index.next){
-             if(index.data.date===key.date &&
-                index.data.publisher===key.publisher){
-               found= index.data;
-               index=null;
-               return found
-              }
-              else
-              {
-               index=index.next
-              }
-          }
-         if(index.data.date===key.date && index.data.publisher===key.publisher){
-           found=index.data;}
-           return found
+    
+    let index=this.hash(JSON.stringify(key.publisher+key.date));
+       if(this.data[index]===undefined)
+       {return "Info not found";}
+       else {return this.data[index];}
+
+   }  
    }
  
   
 
-}
+
 const hashTable= new HashTable();
 hashTable.add({
   publisher: 'LV Review Journal',
@@ -260,27 +200,30 @@ hashTable.add({
   paper: 'Heavy Traffic due to major road work'
 });
 hashTable.add({
-  publisher: 'LV Reviewo Journal',
-  date: '09-25-1993sc',
-  paper: 'Heavy Trafcfic due to major road work'
+  publisher: 'Times',
+  date: '09-25-1995',
+  paper: 'New ways to live'
 });
 hashTable.add({
-  publisher: 'LV Revieew Journal',
-  date: '09-25-1993',
-  paper: 'Heavy Traffic due to major road work'
+  publisher: 'Food Life',
+  date: '09-25-2003',
+  paper: 'Best ways to cook pasta'
 });
 hashTable.add({
-  publisher: 'LV Revriewo Journal',
-  date: '09-25-1993sc',
-  paper: 'Heavy Trafcfic due to major road work'
+  publisher: 'Celebrity News',
+  date: '08-25-1993',
+  paper: 'Celebs of the month'
 });
 
 
+console.log(hashTable)
 console.log(hashTable.find({
-  publisher: 'LV Revieew Journal',
+  publisher: 'LV Review Journal',
   date: '09-25-1993',
  
 }))
+
+
 
 
 
