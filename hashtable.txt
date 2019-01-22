@@ -26,17 +26,10 @@ Object
 Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
 
-class node{
-  constructor(data,next=null){
-    this.data=data;
-    this.next=next;
-  }
-}
-
 class HashTable {
   constructor() {
     this.data = [];
-    this.size=25; 
+    this.size=10; 
   }
 
  hash(key) {
@@ -66,7 +59,7 @@ class HashTable {
 }
 const hashTable= new HashTable();
 hashTable.add({
-  Date: 'Binaya Rimal',
+  Name: 'Binaya Rimal',
   phoneNumber: '205-551-2253',
   Adress: '123 5th ave Edmonds'})
 
@@ -76,13 +69,7 @@ console.log(hashTable.find('205-551-2253'))
 
 Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 
-class node{
-  constructor(data,next=null){
-    this.data=data;
-    this.next=next;
-  }
-}
- 
+
 class HashTable {
   constructor() {
     this.data = [];
@@ -149,12 +136,6 @@ console.log(hashTable.find('76244'))
 Build a system that allows digital copies of newspapers to be entered and searched by publisher 
 and publication date. Use hash tables to store the necessary data.
 
-class node{
-  constructor(data,next=null){
-    this.data=data;
-    this.next=next;
-  }
-}
  
 class HashTable {
   constructor() {
