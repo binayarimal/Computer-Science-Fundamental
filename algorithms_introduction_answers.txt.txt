@@ -1,0 +1,37 @@
+Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+
+   Pour water in cup.
+   Pour cup water in coffeemaker.
+   Put coffee in coffee filter.
+   press the brew button.
+   After brewed pour coffee into mug.
+   
+Washing dishes;
+   Open tap water.
+   Pour water in plate.
+   Put soup in sponge.
+   Scrub plate until plate is clean.
+   Wash plate.
+	
+Doing laundry.
+   Put clothes inside washing machine.
+   Put detergent according to load size.
+   Select load size and temperature on the machine.
+   Press Start.
+   When cycle is complete, transfer clothes to dryer.
+   Select temperature according to load size.
+   Press Start.
+
+As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+	
+   -Tesla's algorithm on their cars allows them to use auto pilot unlike most cars.
+   -Google maps allows them to give the most accurate maps and time estimations on travelling.
+   -PizzaHut's algorithm allows them to have great flavoured pan pizza.
+   
+Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+ 
+   A good algorith has to be consistent, the result shouldn't differ with variations. For example no matter what      sauce you put in the pizza or what   toppings you put the crust should still be able to cook properly. I would       also say a good algorithm should take a consistent amount of time. Time   could vary however it should only          vary to an extent, it shouldnt run infinitely. A good algorithm should also be the most efficient, it should be   able to acheive the most with as little time, space and effort as possible.
+   
+   
