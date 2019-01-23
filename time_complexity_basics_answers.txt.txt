@@ -24,6 +24,7 @@ Quadratic growth O(n^2)rate is directly proportional to the square of the size o
 Exponential growth rateO(2^n) is one where the growth doubles with each addition of the input size. 
 
 Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+I'd say mowing the lawn has a constant growth rate because no matter how long the grass grows it takes the same amount of time to cut it.
 
 Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
 
