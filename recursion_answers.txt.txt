@@ -1,0 +1,53 @@
+Define and compare recursion and iteration.
+
+recursive is when a function calls on itself until a certain base case is met, iteration is when it loops through a data until a condition is met. They are similar because they both need to meet a certain condition otherwise they will run infinitely or until the program crashes. Recursive tend to have a slower runtime however can be implemented easily; while iterative tend to do exactly the opposite.
+
+Name five algorithms that are commonly implemented by recursion.
+1. Factorial
+2. Fibonacci
+3. Binary Search
+4. Greatest Common Divisor
+5. Quick sort.
+
+When should you use recursion, and when should you avoid recursion? Give examples for each.
+It's best to use recursion when using iteration becomes too complicated; you can use recursion to simplify te problem. When the problems can be divided into sub problems that are smaller instances of the same problem recursion can be useful, for example: In factorial you break the number into smaller portion until it returns 1. You should avoid recursion if the runtime is exceedingly increased by using recursion, for example: in fibonacci having to constantly repeat all the calculation might be problematic. 
+
+Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+I think the similarities in all of them is that they all perform same tasks again and again until a condition is met; however they differ in the methods they use to solve each problems. In the maximum the problem is broken down to smaller and smaller pieces and being compared to the first number until the base case is met while with iteration you are comparing with each number one at a time. In factorial the recursive method is very straight forward as you just return the funtion that take the number - one and multiply by the previous one while with iteration you make a loop with the given number and multiply it with the result. With fibonacci with the recursive method, you call the function with the number-1 and number -2 until the base case is met while with iteration you are creating a loop and updating the current position and previous position until the condition is met.
+
+
+Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+"I've used both recursive and iterative function here hope that is okay."
+
+function arr(x){
+  for (let i =0; i<x.length;i++){
+ if (Array.isArray(x[i])){
+  x= x.concat(x[i]);
+   x.splice(i,1);
+   return arr(x)
+ } }
+return x.length
+  
+ 
+}
+
+console.log(arr([1,2,[3,[1,[1,2,3,[4,3]]],2,[1]]]))
+
+A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+function palindrome(str){
+  str=str.split('')
+ if (str[0]===1 || str[0]===undefined){
+   return true
+ };
+  if (str[0]===str[str.length-1]){
+    str.pop();
+    str.shift();
+    str=str.join('')
+    return palindrome(str)
+  }
+  return false
+}
+
+Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+This behaviour exhibits recursion because with recursion, essentially the returned value of the function is the fucntion itself, so by clicking the "Did you mean recursion" link the search searches the same page with the same "Did you mean recursion" suggestion.
