@@ -1,0 +1,47 @@
+Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(arr)
+  FOR i =0 
+  while i is less than length of array add 1 to i 
+   FOR i =j 
+   while i is less than length of array add 1 to i 
+     SET temp to index i of arr;
+      IF index  j of arr<temp
+        SET temp to index j of arr
+        SET index j of arr index of i of arr;
+        SET index i of arr to temp
+      END IF
+   END FOR
+  END FOR
+  return arr
+END FUNCTION
+
+
+
+Write pseudocode for quicksort.
+
+FUNCTION quickSort(arr)
+IF length of arr is <= 1
+ return arr
+END IF
+SET pivot to length of arr - 1
+SET left to emoty arr
+SET right to empty arr
+FOR i =0 
+  while i is less than length of array -1 add 1 to i 
+   IF index i of arr < pivot
+    push the index to left
+   ElSE push it to right
+ END IF
+ENF FOR
+return quickSort with left, pivot, quickSort with right
+END FUNCTION
+
+
+We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Time sort and Quick sort are the most efficient because unlike bubble sort and others that uses nested loops causing the O(n^2) time; quick sort doesn't, it uses the divide and conquer method. Each time the array is divided to smaller pieces until it is eventually sorted. With merge sort you are pairing two values and sorting them and then merging and sorting again until everything is sorted, while with quick sort you are choosing a pivot and putting the greater numbers on one and side while the lesser numbers on the other until eventually there is only one and putting it togeter as sorted. This approach of dividing and conquering leads them to use O(n log n) which is faster.
+
+All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort is when you create spaces for each of the value and you and you insert value based on their digits. For example if a value is 0.25, you put them in 2, if it is 0.30, you put it in 3 and so on. You sort the value the value on the indexes that have more than one value and then you put them all together as a sorted list. This is useful when you know that your value is in within a range.
